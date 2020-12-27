@@ -1,5 +1,6 @@
 import React from 'react';
 import './Popup.scss';
+import Report from './components/Report/Report';
 
 const Popup = () => {
 
@@ -22,6 +23,7 @@ const Popup = () => {
     <div className="polario-content">
       <h1>Polario Report</h1>
       <h3>{`(${url})`}</h3>
+      <Report url={url} />
     </div>
   );
 };
