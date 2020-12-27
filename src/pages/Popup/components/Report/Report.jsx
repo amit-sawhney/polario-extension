@@ -1,7 +1,10 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import axios from 'axios';
+import { BounceLoader } from "react-spinners";
 import './Report.scss';
+
+import NoReport from '../NoReport/NoReport';
 
 const MBFC_API_URL = "http://mbfcapi.herokuapp.com/";
 const DEFAULT_REPORT = {
@@ -30,12 +33,21 @@ const Report = (props) => {
         });
     }, []);
 
-
     return (
-        <div>
-            <h1>Report page</h1>
-            <h2>{`Received URL: ${report.bias}`}</h2>
-        </div>
+        <div className="report-content">
+            {report === REPORT_NOT_FOUND ? (
+                <NoReport />
+            ) : (<></>)}
+            <div style={{ margin: 'auto' }}>
+                <BounceLoader loading={report === DEFAULT_REPORT} color="#008DFF" size={120} />
+            </div>
+            {report !== DEFAULT_REPORT ? (
+                <div>
+                    <h2>{report.bias}</h2>
+                    <h2>{report.accuracy}</h2>
+                </div >
+            ) : (<></>)}
+        </div >
     )
 }
 
@@ -55,9 +67,14 @@ async function retrieveMBFCReport(url) {
     const data = response.data;
     const report = data.sources.find(source => {
         // MBFC API doesn't include "www." for certain sources
-        return source.url.indexOf(url) !== -1 || source.url.indexOf(url.substring(4)) !== -1;
+        if (url.indexOf("www.") !== -1) {
+            return source.url.indexOf(url) !== -1 || source.url.indexOf(url.substring(4)) !== -1;
+        } else {
+            return source.url.indexOf(url) !== -1;
+        }
+
     });
-    if (report === undefined && report === null) {
+    if (report === undefined || report === null) {
         return REPORT_NOT_FOUND;
     } else {
         return report;
