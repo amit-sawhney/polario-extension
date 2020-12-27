@@ -17,6 +17,7 @@ const DEFAULT_REPORT = {
     verified_date: "DEFAULT_VERIFIED_DATE",
 }
 const REPORT_NOT_FOUND = 404;
+const DEFAULT_REPORT_SECTION = "BIAS";
 
 /**
  * Generates a JSX report and fetches data from MBFC
@@ -25,6 +26,7 @@ const REPORT_NOT_FOUND = 404;
 const Report = (props) => {
 
     const [report, setReport] = React.useState(DEFAULT_REPORT);
+    const [reportSection, setReportSection] = React.useState(DEFAULT_REPORT_SECTION);
 
     React.useEffect(() => {
         const response = retrieveMBFCReport(props.url);
@@ -35,18 +37,41 @@ const Report = (props) => {
 
     return (
         <div className="report-content">
-            {report === REPORT_NOT_FOUND ? (
-                <NoReport />
-            ) : (<></>)}
             <div style={{ margin: 'auto' }}>
                 <BounceLoader loading={report === DEFAULT_REPORT} color="#008DFF" size={120} />
             </div>
-            {report !== DEFAULT_REPORT ? (
-                <div>
-                    <h2>{report.bias}</h2>
-                    <h2>{report.accuracy}</h2>
-                </div >
-            ) : (<></>)}
+            {report === REPORT_NOT_FOUND ? (
+                <NoReport />
+            ) : (
+                    <>
+                        {report !== DEFAULT_REPORT ? (
+                            <div className="report-controller">
+                                <div className="report-btn-group">
+                                    <div onClick={() => setReportSection("BIAS")} className={`report-btn ${reportSection === "BIAS" ? "active" : ""}`}>
+                                        <h4>Bias</h4>
+                                    </div>
+                                    <div onClick={() => setReportSection("ACCURACY")} className={`report-btn ${reportSection === "ACCURACY" ? "active" : ""}`}>
+                                        <h4>Accuracy</h4>
+                                    </div>
+                                    <div onClick={() => setReportSection("SCORE")} className={`report-btn ${reportSection === "SCORE" ? "active" : ""}`}>
+                                        <h4>Score</h4>
+                                    </div>
+                                </div>
+                                <div className="report-section">
+                                    {reportSection === "BIAS" ? (
+                                        <h2>{report.bias}</h2>
+                                    ) : (<></>)}
+                                    {reportSection === "ACCURACY" ? (
+                                        <h2>{report.accuracy}</h2>
+                                    ) : (<></>)}
+                                    {reportSection === "SCORE" ? (
+                                        <h2>10/10</h2>
+                                    ) : (<></>)}
+                                </div>
+                            </div >
+                        ) : (<></>)}
+                    </>
+                )}
         </div >
     )
 }

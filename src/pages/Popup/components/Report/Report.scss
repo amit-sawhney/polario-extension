@@ -2,6 +2,46 @@
     display: flex;
     flex-direction: column;
     margin-top: 20px;
-    .report-loading {
+
+    .report-controller {
+        .report-btn-group {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .report-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0px 5px 0px 5px;
+                background-color: #5395f8;
+                color: white;
+                padding: 0 16px 0 16px;
+                height: 38px;
+                width: auto;
+                font-weight: bold;
+                transition: all 0.2s;
+                border: solid #5395f8;
+                border-radius: 5%;
+                &:hover {
+                    background-color: #84b3fa;
+                    border: solid #84b3fa;
+                    cursor: pointer;
+                    color: white;
+                }
+            }
+
+            .active {
+                border: solid #5395f8;
+                border-top: solid black 3px;
+
+                &:hover {
+                    border-top: solid black 3px;
+                }
+            }
+        }
+
+        .report-section {
+            margin-top: 50px;
+        }
     }
 }
