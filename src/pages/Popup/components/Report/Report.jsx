@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import axios from 'axios';
 import './Report.scss';
 
 /**
@@ -10,6 +11,10 @@ const Report = (props) => {
 
     const [bias, setBias] = React.useState("DEFAULT_BIAS");
     const [accuracy, setAccuracy] = React.useState("DEFAULT_ACCURACY");
+
+    React.useEffect(() => {
+
+    }, []);
 
     return (
         <div>
@@ -24,3 +29,4 @@ Report.propTypes = {
 }
 
 export default Report;
+
