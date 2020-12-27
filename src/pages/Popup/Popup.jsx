@@ -23,7 +23,9 @@ const Popup = () => {
     <div className="polario-content">
       <h1>Polario Report</h1>
       <h3>{`(${url})`}</h3>
-      <Report url={url} />
+      {url !== "DEFAULT_URL" ? (
+        <Report url={url} />
+      ) : (<></>)}
     </div>
   );
 };
