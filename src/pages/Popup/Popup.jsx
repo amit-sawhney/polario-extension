@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from '../../assets/img/logo.svg';
-import Greetings from '../../containers/Greetings/Greetings';
-import './Popup.css';
+import './Popup.scss';
 
 const Popup = () => {
+
+  const [url, setUrl] = React.useState("DEFAULT_URL");
+
+  React.useEffect(() => {
+
+    chrome.runtime.sendMessage({ type: "REQ_PAGE_URL" });
+
+    chrome.runtime.onMessage.addListener(function (message, callback) {
+      if (message.type === "PAGE_URL") {
+        setUrl(message.response);
+      } else {
+        console.error("Uncaught response: " + message);
+      }
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/pages/Popup/Popup.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="polario-content">
+      <h1>Polario Report</h1>
+      <h3>{`(${url})`}</h3>
     </div>
   );
 };
