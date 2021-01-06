@@ -13,7 +13,7 @@ const Bias = ({ bias }) => {
 
   const NONPOLITICAL_COLOR_SCHEME = {
     "conspiracy": "fake",
-    "conspiracy/pseudoscience": "fake",
+    "conspiracy/pseudoscience": "fake conspiracy-pseudo",
     "pro-science": "science",
     "questionable": "questionable",
     "fake": "fake",
