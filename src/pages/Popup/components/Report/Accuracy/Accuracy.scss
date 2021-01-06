@@ -1,0 +1,34 @@
+.accuracy-content {
+    margin-top: 30px;
+    font-size: 16px;
+    .accuracy-wrapper {
+        margin: auto;
+        padding: 25px 0px 25px 0px;
+        width: 80%;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 22px;
+        color: white;
+    }
+
+    .warning {
+        background-color: #d2222d;
+    }
+
+    .caution {
+        background-color: #ffbf00;
+    }
+
+    .good {
+        background-color: #238823;
+    }
+
+    .excellent {
+        background-color: #007000;
+    }
+
+    .default {
+        background-color: gray;
+    }
+}
