@@ -6,6 +6,7 @@ import './Report.scss';
 
 import NoReport from '../NoReport/NoReport';
 import Bias from './Bias/Bias';
+import Accuracy from './Accuracy/Accuracy';
 
 const MBFC_API_URL = "http://mbfcapi.herokuapp.com/";
 const DEFAULT_REPORT = {
@@ -63,7 +64,7 @@ const Report = (props) => {
                                         <Bias bias={report.bias} />
                                     ) : (<></>)}
                                     {reportSection === "ACCURACY" ? (
-                                        <h2>{report.accuracy}</h2>
+                                        <Accuracy accuracy={report.accuracy} />
                                     ) : (<></>)}
                                     {reportSection === "SCORE" ? (
                                         <h2>10/10</h2>
