@@ -45,7 +45,7 @@ const Bias = ({ bias }) => {
             <div className={`bias-box ${bias === "right-center" ? "right-center" : ""}`}>R-C</div>
             <div className={`bias-box ${bias === "right" ? "right" : ""}`}>R</div>
           </div>
-          <article>This source generally has the following bias: {displayBias} </article>
+          <p>This source generally has the following bias: {displayBias} </p>
         </div>
       ) : (
           <div className={`nonpolitical-bias ${NONPOLITICAL_COLOR_SCHEME[bias]}`}>
