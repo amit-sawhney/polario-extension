@@ -12,7 +12,7 @@
     "tabs"
   ],
   "chrome_url_overrides": {
-    "newtab": "newtab.html"
+    
   },
   "icons": {
     "128": "icon-128.png"
