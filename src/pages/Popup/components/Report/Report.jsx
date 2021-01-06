@@ -64,7 +64,7 @@ const Report = (props) => {
                                         <Bias bias={report.bias} />
                                     ) : (<></>)}
                                     {reportSection === "ACCURACY" ? (
-                                        <Accuracy accuracy={report.accuracy} />
+                                        <Accuracy accuracy={report.accuracy} bias={report.bias} />
                                     ) : (<></>)}
                                     {reportSection === "SCORE" ? (
                                         <h2>10/10</h2>

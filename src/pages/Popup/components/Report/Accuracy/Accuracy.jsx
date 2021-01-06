@@ -4,9 +4,10 @@ import './Accuracy.scss';
 
 /**
  * Returns the JSX for accuracy display of Page URL
- * @param {{accuracy: String}} accuracy Props contains the variables
+ * @param {{accuracy: String}} accuracy the accuracy of the current URL
+ * @param {{bias: String}} bias the bias of the current URL 
  */
-const Accuracy = ({ accuracy }) => {
+const Accuracy = ({ accuracy, bias }) => {
 
     const ACCURACY_COLOR_SCHEME = {
         "mixed": "caution",
@@ -24,15 +25,20 @@ const Accuracy = ({ accuracy }) => {
 
     return (
         <div className="accuracy-content">
-            <div className={`accuracy-wrapper ${ACCURACY_COLOR_SCHEME[accuracy]}`}>
-                {accuracy}
-            </div>
+            {accuracy.length === 0 || accuracy === "not parsed" ? (
+                <p>It appears there is no accuracy rating for the bias: <b style={{ textTransform: "uppercase" }}>{bias}</b></p>
+            ) : (
+                    <div className={`accuracy-wrapper ${ACCURACY_COLOR_SCHEME[accuracy]}`}>
+                        {accuracy}
+                    </div>
+                )}
         </div>
     )
 }
 
 Accuracy.propType = {
-    accuracy: PropTypes.string.isRequired
+    accuracy: PropTypes.string.isRequired,
+    bias: PropTypes.string.isRequired,
 }
 
 export default Accuracy;
