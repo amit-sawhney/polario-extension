@@ -5,6 +5,7 @@ import { BounceLoader } from "react-spinners";
 import './Report.scss';
 
 import NoReport from '../NoReport/NoReport';
+import Bias from './Bias/Bias';
 
 const MBFC_API_URL = "http://mbfcapi.herokuapp.com/";
 const DEFAULT_REPORT = {
@@ -59,7 +60,7 @@ const Report = (props) => {
                                 </div>
                                 <div className="report-section">
                                     {reportSection === "BIAS" ? (
-                                        <h2>{report.bias}</h2>
+                                        <Bias bias={report.bias} />
                                     ) : (<></>)}
                                     {reportSection === "ACCURACY" ? (
                                         <h2>{report.accuracy}</h2>
