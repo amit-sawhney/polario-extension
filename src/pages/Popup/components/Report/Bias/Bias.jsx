@@ -11,13 +11,24 @@ const Bias = ({ bias }) => {
   const [displayBias, setDisplayBias] = React.useState("DEFAULT_DISPLAY_BIAS");
   const [isPoliticalBias, setIsPoliticalBias] = React.useState(true);
 
+  const NONPOLITICAL_COLOR_SCHEME = {
+    "conspiracy": "fake",
+    "conspiracy/pseudoscience": "fake",
+    "pro-science": "science",
+    "questionable": "questionable",
+    "fake": "fake",
+    "satire": "fake",
+  }
+
   React.useEffect(() => {
     if (bias === "least biased" || bias === "least") {
       setDisplayBias("center");
-    } else if (bias === "conspiracy" || bias === "conspiracy/pseudoscience" || bias === "pro-science" || bias === "questionable") {
+    } else if (bias === "conspiracy" || bias === "conspiracy/pseudoscience" || bias === "pro-science" || bias === "questionable" || bias === "fake" || bias === "satire") {
       setIsPoliticalBias(false);
     } else if (bias === "not parsed") {
       setDisplayBias("No bias data");
+    } else if (bias === "left" || bias === "left-center" || bias === "right-center" || bias === "right") {
+      setDisplayBias(bias);
     } else {
       setDisplayBias("ERROR: Invalid Bias");
     }
@@ -25,14 +36,22 @@ const Bias = ({ bias }) => {
 
   return (
     <div className="bias-content">
-      <div className="bias-boxes">
-        <div className={`bias-box ${bias === "left" ? "left" : ""}`}>L</div>
-        <div className={`bias-box ${bias === "left-center" ? "left-center" : ""}`}>L-C</div>
-        <div className={`bias-box ${bias === "least" || bias === "least biased" ? "center" : ""}`}>C</div>
-        <div className={`bias-box ${bias === "right-center" ? "right-center" : ""}`}>R-C</div>
-        <div className={`bias-box ${bias === "right" ? "right" : ""}`}>R</div>
-      </div>
-      <article>This source generally has the following bias: {bias} </article>
+      {isPoliticalBias ? (
+        <div>
+          <div className="bias-boxes">
+            <div className={`bias-box ${bias === "left" ? "left" : ""}`}>L</div>
+            <div className={`bias-box ${bias === "left-center" ? "left-center" : ""}`}>L-C</div>
+            <div className={`bias-box ${bias === "least" || bias === "least biased" ? "center" : ""}`}>C</div>
+            <div className={`bias-box ${bias === "right-center" ? "right-center" : ""}`}>R-C</div>
+            <div className={`bias-box ${bias === "right" ? "right" : ""}`}>R</div>
+          </div>
+          <article>This source generally has the following bias: {displayBias} </article>
+        </div>
+      ) : (
+          <div className={`nonpolitical-bias ${NONPOLITICAL_COLOR_SCHEME[bias]}`}>
+            {bias}
+          </div>
+        )}
     </div>
   )
 };

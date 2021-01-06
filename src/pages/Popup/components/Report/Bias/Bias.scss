@@ -46,4 +46,26 @@
             color: white;
         }
     }
+
+    .nonpolitical-bias {
+        margin: auto;
+        padding: 25px 0px 25px 0px;
+        width: 80%;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 22px;
+        color: white;
+    }
+    .fake {
+        background-color: #d2222d;
+    }
+
+    .questionable {
+        background-color: #ffbf00;
+    }
+
+    .science {
+        background-color: #238823;
+    }
 }
