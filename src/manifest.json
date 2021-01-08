@@ -6,7 +6,7 @@
   },
   "browser_action": {
     "default_popup": "popup.html",
-    "default_icon": "newsicon.png"
+    "default_icon": "icon-34.png"
   },
   "permissions": [
     "tabs"
@@ -35,8 +35,7 @@
   "web_accessible_resources": [
     "content.styles.css",
     "icon-128.png",
-    "icon-34.png",
-    "newsicon.png"
+    "icon-34.png"
   ],
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
