@@ -42,7 +42,7 @@
                     transition: width 0.3s ease;
                 }
                 &:hover:after {
-                    width: 51%;
+                    width: 52%;
                 }
                 &:after {
                     content: "";
@@ -56,19 +56,44 @@
                     transition: width 0.3s ease;
                 }
                 &:hover:before {
-                    width: 51%;
+                    width: 52%;
                 }
             }
 
             .active {
                 border: solid #5395f8;
-                border-top: solid black 3px;
+                // border-top: solid black 3px;
 
                 &:hover {
                     background-color: #5395f8;
                     border-color: #5395f8;
                     border-top: solid black 3px;
                 }
+
+                &:before {
+                    content: "";
+                    position: absolute;
+                    background: transparent;
+                    top: -3px;
+                    right: 50%;
+                    height: 0;
+                    width: 52%;
+                    border-bottom: 3px solid black;
+                    transition: width 0.3s ease;
+                }
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    background: transparent;
+                    top: -3px;
+                    left: 50%;
+                    height: 0;
+                    width: 52%;
+                    border-bottom: 3px solid black;
+                    transition: width 0.3s ease;
+                }
+
             }
         }
 
